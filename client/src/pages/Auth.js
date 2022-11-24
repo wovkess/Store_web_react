@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, Container, Form, Card, Row } from 'react-bootstrap';
-import { LOGIN_ROUTE, REGISTRATION_ROUTE, SHOP_ROUTE } from "../utils/consts";
+import { LOGIN_ROUTE, REGISTRATION_ROUTE } from "../utils/consts";
 import { NavLink, useLocation } from "react-router-dom"
 
 const Auth = () => {
