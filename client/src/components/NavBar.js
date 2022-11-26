@@ -7,12 +7,14 @@ import { SHOP_ROUTE } from '../utils/consts';
 import { Button, Container } from 'react-bootstrap';
 import { observer } from 'mobx-react-lite';
 import { ADMIN_ROUTE } from "../utils/consts";
+import '../index.css'
+
 const NavBar = observer(() => {
     const { user } = useContext(Context)
     return (
         <Navbar bg="dark" variant="dark">
             <Container>
-                <NavLink style={{ color: 'white' }} to={SHOP_ROUTE} >VP.</NavLink>
+                <NavLink className="index-navbar" style={{color: 'white'}} /*style={{ color: 'White'  }} */ to={SHOP_ROUTE} >Paradise flowers.</NavLink>
                 {user.isAuth ?
                     <Nav className="ml-auto" style={{ color: 'white' }}>
                         <Button class={"btn btn-secondary"}>Admin</Button>
