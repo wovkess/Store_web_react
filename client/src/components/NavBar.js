@@ -6,19 +6,32 @@ import { NavLink } from "react-router-dom"
 import { SHOP_ROUTE } from '../utils/consts';
 import { Button, Container } from 'react-bootstrap';
 import { observer } from 'mobx-react-lite';
-import { ADMIN_ROUTE } from "../utils/consts";
-import '../index.css'
+import { ADMIN_ROUTE, LOGIN_ROUTE } from "../utils/consts";
+import { useNavigate } from 'react-router-dom';
+
 
 const NavBar = observer(() => {
     const { user } = useContext(Context)
+    const navigate = useNavigate()
     return (
         <Navbar bg="dark" variant="dark">
             <Container>
                 <NavLink className="index-navbar" style={{color: 'white'}} /*style={{ color: 'White'  }} */ to={SHOP_ROUTE} >Paradise flowers.</NavLink>
                 {user.isAuth ?
                     <Nav className="ml-auto" style={{ color: 'white' }}>
-                        <Button class={"btn btn-secondary"}>Admin</Button>
-                        <Button class={"btn btn-info"} className="ml-2">Sign in</Button>
+                        <Button 
+                        class={"btn btn-secondary"} 
+                        onClick={() => navigate(ADMIN_ROUTE)}
+                        >
+                            Admin
+                        </Button>
+                        <Button 
+                        class={"btn btn-info"} 
+                        className="ml-2" 
+                        onClick={() => navigate(LOGIN_ROUTE)}
+                        >
+                            Sign out
+                        </Button>
                     </Nav>
                     :
                     <Nav className="ml-auto" style={{ color: 'white' }}>
