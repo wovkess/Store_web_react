@@ -16,17 +16,17 @@ const NavBar = observer(() => {
     return (
         <Navbar bg="dark" variant="dark">
             <Container>
-                <NavLink className="index-navbar" style={{color: 'white'}} /*style={{ color: 'White'  }} */ to={SHOP_ROUTE} >Paradise flowers.</NavLink>
+                <NavLink className="index-navbar" style={{color: 'white', textDecoration: 'none'}} to={SHOP_ROUTE} >Paradise flowers.</NavLink>
                 {user.isAuth ?
                     <Nav className="ml-auto" style={{ color: 'white' }}>
                         <Button 
-                        class={"btn btn-secondary"} 
+                        variant = {"light"}
                         onClick={() => navigate(ADMIN_ROUTE)}
                         >
                             Admin
                         </Button>
                         <Button 
-                        class={"btn btn-info"} 
+                        variant = {"light"}
                         className="ml-2" 
                         onClick={() => navigate(LOGIN_ROUTE)}
                         >
@@ -35,7 +35,13 @@ const NavBar = observer(() => {
                     </Nav>
                     :
                     <Nav className="ml-auto" style={{ color: 'white' }}>
-                        <Button class={"btn btn-info"} onClick={() => user.setIsAuth(true)}>Authorization</Button>
+                        <Button 
+                        variant = {"light"}
+                        // class={"btn btn-info"} 
+                        onClick={() => user.setIsAuth(true)}
+                        >
+                            Authorization
+                        </Button>
                     </Nav>
                 }
             </Container>
