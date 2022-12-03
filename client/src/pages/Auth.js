@@ -1,14 +1,13 @@
 import React, {useContext, useState} from 'react';
-import {Container, Form} from "react-bootstrap";
-import Card from "react-bootstrap/Card";
+import {Container, Form, Card} from "react-bootstrap";
+
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
-import {NavLink, useLocation} from "react-router-dom";
+import {NavLink, useLocation, useNavigate} from "react-router-dom";
 import {LOGIN_ROUTE, REGISTRATION_ROUTE, SHOP_ROUTE} from "../utils/consts";
 import {login, registration} from "../http/userAPI";
 import {observer} from "mobx-react-lite";
 import {Context} from "../index";
-import { useNavigate } from "react-router-dom";
 
 const Auth = observer(() => {
     const {user} = useContext(Context)
@@ -41,17 +40,17 @@ const Auth = observer(() => {
             style={{height: window.innerHeight - 54}}
         >
             <Card style={{width: 600}} className="p-5">
-                <h2 className="m-auto">{isLogin ? 'Authorization' : "Registration"}</h2>
+                <h2 className="m-auto">{isLogin ? 'Авторизация' : "Регистрация"}</h2>
                 <Form className="d-flex flex-column">
                     <Form.Control
                         className="mt-3"
-                        placeholder="Enter your email..."
+                        placeholder="Введите ваш email..."
                         value={email}
                         onChange={e => setEmail(e.target.value)}
                     />
                     <Form.Control
                         className="mt-3"
-                        placeholder="Enter your password..."
+                        placeholder="Введите ваш пароль..."
                         value={password}
                         onChange={e => setPassword(e.target.value)}
                         type="password"
@@ -59,23 +58,11 @@ const Auth = observer(() => {
                     <Row className="d-flex justify-content-between mt-3 pl-3 pr-3">
                         {isLogin ?
                             <div>
-                                Haven't got an account? <NavLink 
-                                to={REGISTRATION_ROUTE} 
-                                className="ml-1"
-                                style={{textDecoration: 'none'}}
-                                >
-                                    Sign up
-                                </NavLink>
+                                Нет аккаунта? <NavLink to={REGISTRATION_ROUTE}>Зарегистрируйся!</NavLink>
                             </div>
                             :
                             <div>
-                                Have account? <NavLink
-                                 to={LOGIN_ROUTE} 
-                                 className="ml-1"
-                                 style={{textDecoration: 'none'}}
-                                 >
-                                    Sign in
-                                </NavLink>
+                                Есть аккаунт? <NavLink to={LOGIN_ROUTE}>Войдите!</NavLink>
                             </div>
                         }
                         <Button
